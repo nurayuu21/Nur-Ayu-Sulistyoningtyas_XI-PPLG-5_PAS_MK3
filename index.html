@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempat Cerita Kamu</title>
+    <link rel="icon" type="image/png" href="pinguin.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Tempat Cerita Kamu</h1>
+    </header>
+
+    <section class="form-container">
+        <h2>Siap Dengerin Cerita Kamu Nih</h2>
+        <h5>Jangan lupa tarik nafas lalu hembuskan, cerita pelan-pelan yaa cantik/ganteng !!</h5>
+        <form action="#" method="post" onsubmit="submitForm(event)">
+            <label for="name">Nama:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="message">Pesan:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Kirim</button>
+        </form>
+
+        <div id="response-message" class="hidden">
+            <p id="thanks-message">Terimakasih sudah bercerita disini, sini hug duluu 🤗</p>
+        </div>
+
+        <!-- Hasil submit ditambahkan di bawah ini -->
+        <div id="submitted-data" class="hidden">
+            <h3>Hasil Submit:</h3>
+            <p id="submitted-name"></p>
+            <p id="submitted-message"></p>
+        </div>
+    </section>
+
+    <section class="contact-info">
+        <h2>Mari Cerita Bareng</h2>
+        <p>Instagram : @yellow_nuraa</p>
+    </section>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+
+            // Ambil nilai input dari formulir
+            var name = document.getElementById("name").value;
+            var message = document.getElementById("message").value;
+
+            // Tampilkan pesan respon dengan animasi
+            var formContainer = document.querySelector(".form-container");
+            formContainer.style.height = "0";
+
+            setTimeout(function () {
+                formContainer.style.height = "auto";
+                var responseMessage = document.getElementById("response-message");
+                responseMessage.classList.remove("hidden");
+
+                // Tampilkan hasil submit
+                var submittedData = document.getElementById("submitted-data");
+                submittedData.classList.remove("hidden");
+                document.getElementById("submitted-name").innerText = "Nama: " + name;
+                document.getElementById("submitted-message").innerText = "Pesan: " + message;
+            }, 500); // 500ms sesuai dengan durasi transisi
+
+            // Optional: Reset formulir setelah pengiriman
+            document.getElementById("name").value = "";
+            document.getElementById("message").value = "";
+        }
+    </script>
+</body>
+
+</html>
